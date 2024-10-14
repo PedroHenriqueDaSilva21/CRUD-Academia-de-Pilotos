@@ -5,9 +5,9 @@ const app = express();
 // Importando o Sequelize (com os dados da conexão)
 import connection from "./config/sequelize-config.js";
 // Importando os Controllers (onde estão as rotas)
-import ClientesController from "./controllers/ClientesController.js";
-import ProdutosController from "./controllers/ProdutosController.js";
-import PedidosController from "./controllers/PedidosController.js";
+import EquipesController from "./controllers/EquipesController.js";
+import EquipamentosController from "./controllers/EquipamentosController.js";
+import PilotosController from "./controllers/PilotosController.js";
 
 // Permite capturar dados vindo de formulários
 app.use(express.urlencoded({extended: false}))
@@ -23,7 +23,7 @@ connection
   });
 
 // Criando o banco de dados se ele não existir
-connection.query(`CREATE DATABASE IF NOT EXISTS loja;`).then(() => {
+connection.query(`CREATE DATABASE IF NOT EXISTS f1;`).then(() => {
   console.log("O banco de dados está criado.");
 }).catch((error) => {
     console.log(error)
@@ -35,9 +35,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // Definindo o uso das rotas dos Controllers
-app.use("/", ClientesController);
-app.use("/", ProdutosController);
-app.use("/", PedidosController);
+app.use("/", EquipesController);
+app.use("/", EquipamentosController);
+app.use("/", PilotosController);
 
 // ROTA PRINCIPAL
 app.get("/", function (req, res) {

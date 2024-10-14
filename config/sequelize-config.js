@@ -8,7 +8,7 @@ const connection = new Sequelize({
   password: "", //Alunos deixem a senha em branco
   port: '3307',
   // Comente essa linha na primeira execução da aplicação
-  database: 'loja',
+  database: 'f1',
   timezone: "-03:00",
 });
 export default connection;

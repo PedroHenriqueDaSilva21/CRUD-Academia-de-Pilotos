@@ -4,19 +4,19 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Cadastrar Produto</h1>
+            <h1>Cadastrar Equipe</h1>
         </div>
     
         <div class="card-body">
-            <form action="/produtos/new" method="POST">
-                <label>Nome do Produto:</label>
-                <input type="text" name="nome" id="nome" placeholder="Insira o nome do produto" class="form-control" required>
+            <form action="/equipes/new" method="POST">
+                <label>Nome da equipe:</label>
+                <input type="text" name="nome" id="nome" placeholder="Insira o nome da equipe" class="form-control" required>
 
-                <label>Preço do Produto:</label>
-                <input type="text" name="preco" id="preco" placeholder="Insira o preco do produto" class="form-control" required>
+                <label>Regiao da equipe:</label>
+                <input type="text" name="regiao" id="regiao" placeholder="Insira a região da equipe" class="form-control" required>
 
-                <label>Categoria do Produto:</label>
-                <input type="text" name="categoria" id="categoria" placeholder="Insira a categoria do produto" class="form-control" required>
+                <label>Titulo:</label>
+                <input type="text" name="titulo" id="titulo" placeholder="Insira a quantidade de titulos" class="form-control" required>
                 <br>
                 <input type="submit" class="btn btn-success" value="Cadastrar">
             </form>
@@ -29,35 +29,35 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Produtos</h1>
+            <h1>Equipes</h1>
         </div>
         <div class="card-body">
             <table>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nome:</th>
-                        <th>Categoria:</th>
-                        <th>Preco:</th>
+                        <th>Nome da Equipe:</th>
+                        <th>Região da Equipe:</th>
+                        <th>Titulos da Equipe:</th>
                         <th colspan="2">Ações:</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% produtos.forEach(produto=> { %>
+                    <% equipes.forEach(equipe=> { %>
                         <tr>
                             <td><img src="imgs/avatar.png" width="30px"></td>
                             <td>
-                                <%= produto.nome %>
+                                <%= equipe.nome %>
                             </td>
                             <td>
-                                <%= produto.categoria%>
+                                <%= equipe.regiao %>
                             </td>
                             <td>
-                                <%= produto.preco%>
+                                <%= equipe.titulo %>
                             </td>
-                            <td><a style="color: orange;" href="/produtos/edit/<%= produto.id %>">Editar</a></td>
+                            <td><a style="color: orange;" href="/equipes/edit/<%= equipe.id %>">Editar</a></td>
                             <td>
-                                <a style="color:red;" href="/produtos/delete/<%= produto.id %>" onclick="return confirm('Deseja realmente deletar o produto <%= produto.nome %>?')">
+                                <a style="color:red;" href="/equipes/delete/<%= equipe.id %>" onclick="return confirm('Deseja realmente deletar a equipe <%= equipe.nome %>?')">
                                 Deletar
                                 </a>
                             </td>

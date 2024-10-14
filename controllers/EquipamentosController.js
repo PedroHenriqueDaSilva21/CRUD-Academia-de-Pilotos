@@ -1,46 +1,46 @@
 import express from "express";
 const router = express.Router();
 // Importando o model de Cliente
-import Produto from "../models/Produto.js";
+import Equipamento from "../models/Equipamento.js";
 
 // ROTA PEDIDOS
-router.get("/produtos", function (req, res) {
-  Produto.findAll().then((produtos) => {
-    res.render("produtos", {
-      produtos: produtos,
+router.get("/equipamentos", function (req, res) {
+  Equipamento.findAll().then((equipamentos) => {
+    res.render("equipamentos", {
+      equipamentos: equipamentos,
     });
   });
 });
 
 // ROTA DE CADASTRO DE CLIENTES
-router.post("/produtos/new", (req, res) => {
+router.post("/equipamentos/new", (req, res) => {
   // RECEBENDO OS DADOS DO FORMULÁRIO E GRAVANDO NAS VARIÁVEIS
   const nome = req.body.nome;
   const preco = req.body.preco;
   const categoria = req.body.categoria;
   
-  Produto.create({
+  Equipamento.create({
     nome: nome,
     preco: preco,
     categoria: categoria,
   }).then(() => {
-    res.redirect("/produtos");
+    res.redirect("/equipamentos");
   });
 });
 
 // ROTA DE EXCLUSÃO DE CLIENTES
 // ESSA ROTA POSSUI UM PARÂMETRO ID
-router.get("/produtos/delete/:id", (req, res) => {
+router.get("/equipamentos/delete/:id", (req, res) => {
   // COLETAR O ID QUE VEIO NA URL
   const id = req.params.id;
   // MÉTODO PARA EXCLUIR
-  Produto.destroy({
+  Equipamento.destroy({
     where: {
       id: id,
     },
   })
     .then(() => {
-      res.redirect("/produtos");
+      res.redirect("/equipamentos");
     })
     .catch((error) => {
       console.log(error);
@@ -48,11 +48,11 @@ router.get("/produtos/delete/:id", (req, res) => {
 });
 
 // ROTA DE EDIÇÃO DE CLIENTE
-router.get("/produtos/edit/:id", (req, res) => {
+router.get("/equipamentos/edit/:id", (req, res) => {
   const id = req.params.id;
-  Produto.findByPk(id).then((produto) => {
-    res.render("produtosEdit", {
-      produto: produto,
+  Equipamento.findByPk(id).then((equipamento) => {
+    res.render("equipamentoEdit", {
+      equipamento: equipamento,
     });
   }).catch((error) => {
     console.log(error)
@@ -60,12 +60,12 @@ router.get("/produtos/edit/:id", (req, res) => {
 });
 
 // ROTA DE ALTERAÇÃO DE CLIENTE
-router.post("/produtos/update", (req, res) => {
+router.post("/equipamentos/update", (req, res) => {
   const id = req.body.id
   const nome = req.body.nome
   const preco = req.body.preco
   const categoria = req.body.categoria
-  Produto.update(
+  Equipamento.update(
     {
       nome: nome,
       preco: preco,
@@ -73,7 +73,7 @@ router.post("/produtos/update", (req, res) => {
     },
     {where: {id : id}}
   ).then(() => {
-    res.redirect("/produtos")
+    res.redirect("/equipamentos")
   }).catch((error) => {
     console.log(error)
   })

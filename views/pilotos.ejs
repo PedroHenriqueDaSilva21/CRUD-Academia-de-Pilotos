@@ -4,16 +4,17 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Cadastrar Pedido</h1>
+            <h1>Cadastrar Piloto</h1>
         </div>
     
         <div class="card-body">
-            <form action="/pedidos/new" method="POST">
-                <label>Numero do Pedido:</label>
-                <input type="text" name="numero" id="numero" placeholder="Insira o pedido" class="form-control" required>
+            <form action="/pilotos/new" method="POST">
+                <label>Nome do Piloto:</label>
+                <input type="text" name="nome" id="nome" placeholder="Insira o nome do piloto" class="form-control" required>
 
-                <label>Preco do Pedido:</label>
-                <input type="text" name="preco" id="preco" placeholder="Insira o preco do pedido" class="form-control" required>
+                <label>Nacionalidade do Piloto:</label>
+                <input type="text" name="nacionalidade" id="nacionalidade" placeholder="Insira a nacionalidade do piloto" class="form-control" required>
+
                 <br>
                 <input type="submit" class="btn btn-success" value="Cadastrar">
             </form>
@@ -26,31 +27,31 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Pedidos</h1>
+            <h1>Pilotos</h1>
         </div>
         <div class="card-body">
             <table>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Numero:</th>
-                        <th>Preco:</th>
+                        <th>Nome do Piloto:</th>
+                        <th>Nacionalidade do Piloto:</th>
                         <th colspan="2">Ações:</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% pedidos.forEach(pedido=> { %>
+                    <% pilotos.forEach(piloto=> { %>
                         <tr>
                             <td><img src="imgs/avatar.png" width="30px"></td>
                             <td>
-                                <%= pedido.numero %>
+                                <%= piloto.nome %>
                             </td>
                             <td>
-                                <%= pedido.preco %>
+                                <%= piloto.nacionalidade%>
                             </td>
-                            <td><a style="color: orange;" href="/pedidos/edit/<%= pedido.id %>">Editar</a></td>
+                            <td><a style="color: orange;" href="/pilotos/edit/<%= piloto.id %>">Editar</a></td>
                             <td>
-                                <a style="color:red;" href="/pedidos/delete/<%= pedido.id %>" onclick="return confirm('Deseja realmente deletar o pedido <%= pedido.numero %>?')">
+                                <a style="color:red;" href="/pilotos/delete/<%= piloto.id %>" onclick="return confirm('Deseja realmente deletar o piloto <%= piloto.nome %>?')">
                                 Deletar
                                 </a>
                             </td>

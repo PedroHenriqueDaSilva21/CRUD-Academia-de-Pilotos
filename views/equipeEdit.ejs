@@ -1,0 +1,25 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Equipe</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/equipes/update" method="POST">
+                <label>Nome da Equipe:</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="<%= equipe.nome %>" required>
+                <label>Região da Equipe:</label>
+                <input class="form-control" type="text" name="regiao" id="regiao" value="<%= equipe.regiao %>" required>
+                <label>Titulos da Equipe:</label>
+                <input class="form-control" type="text" name="titulo" id="titulo" value="<%= equipe.titulo %>"required>
+                <input type="hidden" name="id" value="<%= equipe.id %>">
+                <br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm('Confirma as alterações para a equipe <%= equipe.nome %>')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+<%- include ('partials/footer.ejs') %>

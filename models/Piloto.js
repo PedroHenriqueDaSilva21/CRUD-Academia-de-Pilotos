@@ -3,20 +3,16 @@ import Sequelize from "sequelize";
 // Configuração do Sequelize
 import connection from "../config/sequelize-config.js";
 // .define cria a tabela no banco
-const Produto = connection.define("produtos", {
+const Piloto = connection.define("pilotos", {
   nome: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  categoria: {
+  nacionalidade: {
     type: Sequelize.STRING,
     allowNull: false,
-  },
-  preco: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
+  }
 });
 // Não força a criação da tabela caso já exista
-Produto.sync({ force: false });
-export default Produto;
+Piloto.sync({ force: false });
+export default Piloto;
